@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="算法测试套件">
+    <test name="算法">
+        <classes>
+            <class name="com.szreach.test.TestCalc">
+                <methods>
+                    <include name="del_Test"></include>
+
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <listeners>
+        <listener class-name="com.szreach.test.calc.ExtentTestNGIReporterListener"></listener>
+    </listeners>
+</suite>
+
+
+
+
+
+
+
+
+
+
