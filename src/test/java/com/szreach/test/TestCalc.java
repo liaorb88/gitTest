@@ -1,12 +1,18 @@
 package com.szreach.test;
 
 import com.szreach.test.calc.Calc;
+import com.szreach.util.ExcelUtil;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
+import java.util.Map;
 
 public class TestCalc {
     private static int x;
     private static int y;
     private static String method;
+
+    ExcelUtil excelUtil =new ExcelUtil();
 
     public int calc(String method,int x,int y){
         Calc c = new Calc();
@@ -18,15 +24,17 @@ public class TestCalc {
     }
 
     @Test
-    public void calc(){
+    public void calc() throws IOException {
         TestCalc t = new TestCalc();
-        t.calc("add",5,5);
+        Map<String, Object> map = excelUtil.readExcel("/home/testCalc/CalcCase.xlsx", 0,  1);
+        t.calc("add",Integer.parseInt((String)map.get("x")),Integer.parseInt((String)map.get("y")));
     }
 
     @Test
-    public void minus(){
+    public void minus() throws IOException{
         TestCalc t = new TestCalc();
-        t.calc("minus",8,5);
+        Map<String, Object> map = excelUtil.readExcel("/home/testCalc/CalcCase.xlsx", 0,  2);
+        t.calc("minus",Integer.parseInt((String)map.get("x")),Integer.parseInt((String)map.get("y")));
     }
 
 }
